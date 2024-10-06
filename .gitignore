@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# audio assets
+/src/audio
+
 # testing
 /coverage
 

@@ -1,6 +1,25 @@
-# Getting Started with Create React App
+# Waveform Editor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installation
+
+### Develop
+
+## Usage
+
+
+## Component Structure
+
+
+
+## Testing
+
+jest for unit and integration
+cypress for e2e and cross-browser compatibility
+
+
+eslint airbnb typescript 
+
+
 
 ## Available Scripts
 
