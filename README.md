@@ -5,37 +5,38 @@
 
 ## File Structure
 
-WaveformEditor : top-level component; exposes hooks for events, props, and player
-EventsStore : Redux store for emitting and listening to events; supports edit history/timeline
-	↳ EventTypes
-    ↳ EventActions
-    ↳ EventReducer
-    ↳ EventStore
-Player : (emits events)
-Renderer : (emits events)
-WebAudio : (emits events)
-Timer :  (emits events)
-Decoder 
-Minimap
-ToolPane
-Tools : Workflow components for editing audio and creating/manipulating timeline objects
-    ↳ Tool	: Generic class for a tool
-    ↳ Select
-    ↳ CreateMarker
-    ↳ CreateRegion
-    ↳ CreateBeatGrid
-    ↳ Extend
-    ↳ Inpaint
-    ↳ Audition
-TimelineObjects : components that exist on the waveform timeline 
-    ↳ TimelineObject : generic class for a timeline object
-    ↳ Marker
-    ↳ Region : contains region-specific tools
-    ↳ BeatGrid
-    ↳ Playhead
+WaveformEditor : top-level component; exposes hooks for events, props, and player <br/>
+EventsStore : Redux store for emitting and listening to events; supports edit history/timeline <br/>
+    ↳ EventTypes <br/>
+    ↳ EventActions <br/>
+    ↳ EventReducer <br/>
+    ↳ EventStore <br/>
+Player : (emits events) <br/>
+Renderer : (emits events) <br/>
+WebAudio : (emits events) <br/>
+Timer :  (emits events) <br/>
+Decoder <br/>
+Minimap <br/>
+ToolPane <br/>
+Tools : Workflow components for editing audio and creating/manipulating timeline objects <br/>
+    ↳ Tool	: Generic class for a tool <br/>
+    ↳ Select <br/>
+    ↳ CreateMarker <br/>
+    ↳ CreateRegion <br/>
+    ↳ CreateBeatGrid <br/>
+    ↳ Extend <br/>
+    ↳ Inpaint <br/>
+    ↳ Audition <br/>
+TimelineObjects : components that exist on the waveform timeline <br/>
+    ↳ TimelineObject : generic class for a timeline object <br/>
+    ↳ Marker <br/>
+    ↳ Region : contains region-specific tools <br/>
+    ↳ BeatGrid <br/>
+    ↳ Playhead <br/>
 
 ## Testing
 
+TODO 
 jest for unit and integration
 cypress for e2e and cross-browser compatibility
 eslint airbnb typescript 
