@@ -1,25 +1,44 @@
 # Waveform Editor
 
-## Installation
+[Product Requirements & Spec Document]
+(https://docs.google.com/document/d/1RpmqA1lvlcHWluTdqFVjn0JqOOa_uifrncxbG1q1_wM/edit)
 
-### Develop
+## File Structure
 
-## Usage
-
-
-## Component Structure
-
-
+WaveformEditor : top-level component; exposes hooks for events, props, and player
+EventsStore : Redux store for emitting and listening to events; supports edit history/timeline
+	↳ EventTypes
+    ↳ EventActions
+    ↳ EventReducer
+    ↳ EventStore
+Player : (emits events)
+Renderer : (emits events)
+WebAudio : (emits events)
+Timer :  (emits events)
+Decoder 
+Minimap
+ToolPane
+Tools : Workflow components for editing audio and creating/manipulating timeline objects
+    ↳ Tool	: Generic class for a tool
+    ↳ Select
+    ↳ CreateMarker
+    ↳ CreateRegion
+    ↳ CreateBeatGrid
+    ↳ Extend
+    ↳ Inpaint
+    ↳ Audition
+TimelineObjects : components that exist on the waveform timeline 
+    ↳ TimelineObject : generic class for a timeline object
+    ↳ Marker
+    ↳ Region : contains region-specific tools
+    ↳ BeatGrid
+    ↳ Playhead
 
 ## Testing
 
 jest for unit and integration
 cypress for e2e and cross-browser compatibility
-
-
 eslint airbnb typescript 
-
-
 
 ## Available Scripts
 
@@ -57,9 +76,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

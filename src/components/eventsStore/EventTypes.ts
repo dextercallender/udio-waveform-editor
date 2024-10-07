@@ -21,6 +21,14 @@ export interface EmitAction {
 
 export type Action = ListenAction | UnlistenAction | EmitAction;
 
+export interface EventData {
+    date: any;
+    parameters: any;
+    data: any;
+    media: any;
+}
+
 export interface State {
     subscribers: { [eventName: string]: Array<(data: any) => void> };
+    eventHistory: Array<{ eventName: string; data: EventData }>;
 }

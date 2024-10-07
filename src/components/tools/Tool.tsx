@@ -21,13 +21,13 @@ class Tool {
         this.actions = params.actions;
         this.isEnabled = params.isEnabled;
         this.isActive = false;
-
-        // TODO accept web audio and renderer
     }
+
+    // TODO
 }
 
 type ToolMap = {
-    // TODO: done like EventMap   
+    // TODO 
 }
 
 export { Tool, type ToolAction, type ToolParams, type ToolMap }

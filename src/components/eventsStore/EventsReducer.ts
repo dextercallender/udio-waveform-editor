@@ -2,7 +2,8 @@
 import { ActionType, Action, State } from './EventTypes';
 
 export const initialState: State = {
-    subscribers: {}
+    subscribers: {},
+    eventHistory: [],
 };
 
 export const reducer = (state: State = initialState, action: Action): State => {
@@ -29,6 +30,7 @@ export const reducer = (state: State = initialState, action: Action): State => {
                 }
             };
         case ActionType.EMIT:
+            state.eventHistory.push({ eventName: action.payload.eventName, data: action.payload.data });
             (state.subscribers[action.payload.eventName] || []).forEach(callback => callback(action.payload.data));
             return state;
         default:
