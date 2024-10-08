@@ -8,6 +8,7 @@ import BasePlugin, { type BasePluginEvents } from './base-plugin.js'
 import { makeDraggable } from './draggable.js'
 import EventEmitter from './event-emitter.js'
 import createElement from './dom.js'
+import React, { FC } from 'react'
 
 export type RegionsPluginOptions = undefined
 
@@ -87,6 +88,12 @@ class SingleRegion extends EventEmitter<RegionEvents> implements Region {
   public maxLength = Infinity
   public channelIdx: number
   public contentEditable = false
+  public regionStyle: {}
+  public regionElement: React.RefObject<HTMLDivElement>
+  public leftHandleStyle = {}
+  public leftHandleElement: React.RefObject<HTMLDivElement>
+  public rightHandleStyle = {}
+  public rightHandleElement: React.RefObject<HTMLDivElement>
   public subscriptions: (() => void)[] = []
 
   constructor(params: RegionParams, private totalDuration: number, private numberOfChannels = 0) {
@@ -103,6 +110,14 @@ class SingleRegion extends EventEmitter<RegionEvents> implements Region {
     this.maxLength = params.maxLength ?? this.maxLength
     this.channelIdx = params.channelIdx ?? -1
     this.contentEditable = params.contentEditable ?? this.contentEditable
+
+    this.regionStyle = {}
+    this.leftHandleStyle = {}
+    this.rightHandleStyle = {}
+    this.regionElement = React.createRef()
+    this.leftHandleElement = React.createRef()
+    this.rightHandleElement = React.createRef()
+
     this.element = this.initElement()
     this.setContent(params.content)
     this.setPart()
@@ -131,6 +146,13 @@ class SingleRegion extends EventEmitter<RegionEvents> implements Region {
       wordBreak: 'keep-all',
     }
 
+    this.leftHandleStyle = {
+        ...handleStyle,
+        left: '0',
+        borderLeft: '2px solid rgba(0, 0, 0, 0.5)',
+        borderRadius: '2px 0 0 2px',
+    }
+
     const leftHandle = createElement(
       'div',
       {
@@ -144,6 +166,13 @@ class SingleRegion extends EventEmitter<RegionEvents> implements Region {
       },
       element,
     )
+
+    this.rightHandleStyle = {
+        ...handleStyle,
+        right: '0',
+        borderRight: '2px solid rgba(0, 0, 0, 0.5)',
+        borderRadius: '0 2px 2px 0',
+    }
 
     const rightHandle = createElement(
       'div',
@@ -162,15 +191,15 @@ class SingleRegion extends EventEmitter<RegionEvents> implements Region {
     // Resize
     const resizeThreshold = 1
     this.subscriptions.push(
-      makeDraggable(
-        leftHandle,
+      makeDraggable(    // TODO : refactor makeDraggable to work on React component via ref
+        this.leftHandleElement.current,
         (dx) => this.onResize(dx, 'start'),
         () => null,
         () => this.onEndResizing(),
         resizeThreshold,
       ),
-      makeDraggable(
-        rightHandle,
+      makeDraggable(    // TODO : refactor makeDraggable to work on React component via ref
+        this.rightHandleElement.current,
         (dx) => this.onResize(dx, 'end'),
         () => null,
         () => this.onEndResizing(),
@@ -201,8 +230,7 @@ class SingleRegion extends EventEmitter<RegionEvents> implements Region {
       elementTop = elementHeight * this.channelIdx
     }
 
-    const element = createElement('div', {
-      style: {
+    this.regionStyle = {
         position: 'absolute',
         top: `${elementTop}%`,
         height: `${elementHeight}%`,
@@ -213,8 +241,7 @@ class SingleRegion extends EventEmitter<RegionEvents> implements Region {
         transition: 'background-color 0.2s ease',
         cursor: this.drag ? 'grab' : 'default',
         pointerEvents: 'all',
-      },
-    })
+    }
 
     // Add resize handles
     if (!isMarker && this.resize) {
@@ -389,6 +416,16 @@ class SingleRegion extends EventEmitter<RegionEvents> implements Region {
         this.removeResizeHandles(this.element)
       }
     }
+  }
+
+  public render() {
+    return (
+        <>
+            <div id="left-handle" key="region-handle-left" ref={this.leftHandleElement} style={this.leftHandleStyle}/>
+            <div id="region" ref={this.regionElement} style={this.regionStyle} />
+            <div id="right-handle" key="region-handle-right" ref={this.rightHandleElement} style={this.rightHandleStyle}/>
+        </>
+    )
   }
 
   /** Remove the region */

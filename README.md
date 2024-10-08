@@ -1,16 +1,15 @@
 # Waveform Editor
 
-[Product Requirements & Spec Document]
-(https://docs.google.com/document/d/1RpmqA1lvlcHWluTdqFVjn0JqOOa_uifrncxbG1q1_wM/edit)
+[Product Requirements & Spec Document](https://docs.google.com/document/d/1RpmqA1lvlcHWluTdqFVjn0JqOOa_uifrncxbG1q1_wM/edit)
 
 ## File Structure
 
 WaveformEditor : top-level component; exposes hooks for events, props, and player <br/>
 EventsStore : Redux store for emitting and listening to events; supports edit history/timeline <br/>
-    ↳ EventTypes <br/>
-    ↳ EventActions <br/>
-    ↳ EventReducer <br/>
-    ↳ EventStore <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ EventTypes <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ EventActions <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ EventReducer <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ EventStore <br/>
 Player : (emits events) <br/>
 Renderer : (emits events) <br/>
 WebAudio : (emits events) <br/>
@@ -19,20 +18,20 @@ Decoder <br/>
 Minimap <br/>
 ToolPane <br/>
 Tools : Workflow components for editing audio and creating/manipulating timeline objects <br/>
-    ↳ Tool	: Generic class for a tool <br/>
-    ↳ Select <br/>
-    ↳ CreateMarker <br/>
-    ↳ CreateRegion <br/>
-    ↳ CreateBeatGrid <br/>
-    ↳ Extend <br/>
-    ↳ Inpaint <br/>
-    ↳ Audition <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ Tool	: Generic class for a tool <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ Select <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ CreateMarker <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ CreateRegion <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ CreateBeatGrid <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ Extend <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ Inpaint <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ Audition <br/>
 TimelineObjects : components that exist on the waveform timeline <br/>
-    ↳ TimelineObject : generic class for a timeline object <br/>
-    ↳ Marker <br/>
-    ↳ Region : contains region-specific tools <br/>
-    ↳ BeatGrid <br/>
-    ↳ Playhead <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ TimelineObject : generic class for a timeline object <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ Marker <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ Region : contains region-specific tools <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ BeatGrid <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; ↳ Playhead <br/>
 
 ## Testing
 
