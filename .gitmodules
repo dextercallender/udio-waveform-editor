@@ -1,0 +1,3 @@
+[submodule "src/lib/wavesurfer.js"]
+	path = src/lib/wavesurfer.js
+	url = https://github.com/dextercallender/wavesurfer.js.git
