@@ -1,7 +1,7 @@
 import {useRef, useState, useEffect} from 'react';
 import './App.css';
 import { useWavesurfer } from '@wavesurfer/react'
-import { useWaveformEditorHooks, WaveformEditorProps } from './components/WaveformEditor'
+import { WaveformEditor, useWaveformEditorHooks, WaveformEditorProps } from './components/WaveformEditor'
 
 // Test App compares original WaveSurfer component wiht new WaveformEditor component
 
@@ -17,7 +17,15 @@ function App() {
     container: wavesurferRef,
     url: 'audio/mono.mp3',
     waveColor: 'purple',
-    height: 100,
+    height: 50,
+    barWidth: 3,
+    barHeight: 0.5,
+    barGap: 1,
+    barRadius: 2,
+    // waveColor: "#333",
+    hideScrollbar: true,
+    autoCenter: false,
+    autoScroll: false,
   })
 
   const onPlayPause = () => {
@@ -30,8 +38,17 @@ function App() {
     containerRef: waveformEditorRef,
     url: 'audio/mono.mp3',
     waveColor: 'red',
-    height: 100,
+    height: 50,
     regionColor: 'green',
+    barWidth: 3,
+    barHeight: 0.5,
+    barGap: 1,
+    barRadius: 2,
+    cursorColor: "white",
+    // waveColor: "#333",
+    hideScrollbar: true,
+    autoCenter: false,
+    autoScroll: false,
   }
 
   const {useWaveformEditor, useWaveformEditorState, useWaveformEditorEvents} = useWaveformEditorHooks(props)
@@ -44,6 +61,11 @@ function App() {
 
       <section id="waveformeditor-container">
         <h2>Udio Waveform Editor Component</h2>
+        <WaveformEditor {...props} />
+      </section>
+
+      <section id="waveformhooks-container">
+        <h2>Udio Waveform Editor Hooks</h2>
         <div ref={waveformEditorRef} />
         <button onClick={()=>{}}>
 

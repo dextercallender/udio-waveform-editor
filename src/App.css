@@ -2,8 +2,8 @@
   text-align: center;
 }
 
-#wavesurfer-container, #waveformeditor-container {
+#wavesurfer-container, #waveformeditor-container, #waveformhooks-container {
   width: 80%;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
